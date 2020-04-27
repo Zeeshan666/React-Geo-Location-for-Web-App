@@ -1,24 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { usePosition } from 'use-position';
+
 
 function App() {
+  const watch = true;
+const {
+  latitude,
+  longitude,
+  timestamp,
+  accuracy,
+  error,
+} = usePosition(watch,{enableHighAccuracy: true});
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      latitude: {latitude}<br/>
+      longitude: {longitude}<br/>
+      timestamp: {timestamp}<br/>
+      accuracy: {accuracy && `${accuracy}m`}<br/>
+      error: {error}
     </div>
   );
 }
